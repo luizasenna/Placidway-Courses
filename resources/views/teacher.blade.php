@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Teacher Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,9 +15,69 @@
                     @endif
 
                     Hi, Teacher user. {{ __('You are logged in!') }}
+
+                    <hr/>
+                    <div class="row col-md-8">
+                    <select id="demo" multiple="multiple">
+
+                      <option value="one" data-section="top" selected="selected" data-index="3">C++</option>
+
+                      <option value="two" data-section="top" selected="selected" data-index="1">Python</option>
+
+                      <option value="three" data-section="top" selected="selected" data-index="2">Ruby</option>
+
+                      <option value="four" data-section="top">Swift</option>
+
+                      <option value="wow" data-section="JavaScript/Library/Popular">jQuery</option>
+
+                    </select>
+                    <div>
+                    <script>$("#demo").treeMultiselect(options);
+
+                    $("#demo").treeMultiselect({
+
+                          allowBatchSelection:true,
+
+                          sortable:false,
+
+                          collapsible:true,
+
+                          enableSelectAll:false,
+
+                          selectAllText:'Select All',
+
+                          unselectAllText:'Unselect All',
+
+                          freeze:false,
+
+                          hideSidePanel:false,
+
+                          maxSelections: 0,
+
+                          onlyBatchSelection:false,
+
+                          sectionDelimiter:'/',
+
+                          showSectionOnSelected:true,
+
+                          startCollapsed:false,
+
+                          searchable:false,
+
+                          searchParams: ['value','text','description','section'],
+
+                          onChange:null
+
+                        });
+                        </script>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="js/tree-multiselect/dist/jquery.tree-multiselect.min.js"></script>
+
 @endsection
