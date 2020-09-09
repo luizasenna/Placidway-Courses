@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Placidway Courses - Luiza´s Test of Wonderfulness</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -51,7 +51,7 @@
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 16px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -81,15 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Placidway Courses
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://community.cloudways.com/">Community</a>
-                    <a href="https://www.cloudways.com/blog/laravel/">Blog</a>
-                    <a href="https://www.cloudways.com/en/laravel-faqs.php">FAQ</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                  <b>Luiza´s Test of Wonderfulness</b>
                 </div>
             </div>
         </div>
