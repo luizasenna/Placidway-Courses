@@ -65,10 +65,10 @@
                             <label for="selectType" class="col-md-4 col-form-label text-md-right">{{ __('You are a') }}</label>
 
                             <div class="col-md-6">
-                              
+
                                 <select class="form-control" id="selectType">
-                                  <option>Student</option>
-                                  <option>Teacher</option>
+                                  <option value="1">Student</option>
+                                  <option value="0">Teacher</option>
                                 </select>
                             </div>
                         </div>
