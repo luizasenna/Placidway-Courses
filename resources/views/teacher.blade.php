@@ -14,9 +14,29 @@
                         </div>
                     @endif
 
-                    Hi, Teacher user. {{ __('You are logged in!') }}
+                    Hi, Teacher <b>{{ $id->name }}!</b>
 
                     <hr/>
+
+                    Below the registered Student(s) at the system:
+
+                    <div class="row col-md-6 m-3">
+
+                          <table class="table table-stiped">
+                            <tr>
+                              <td>Name</td>
+                              <td>Action</td>
+                            </tr>
+
+                            @foreach($students as $s)
+                                <tr>
+                                  <td>{{ $s->name }}</td>
+                                  <td><a class="btn btn-info" href="#" role="button">Show</a></td>
+                                </tr>
+
+                            @endforeach
+                            </table>
+                    </div>
                     <div class="row col-md-8">
                     <select id="demo" multiple="multiple">
 
