@@ -31,7 +31,7 @@
                             @foreach($students as $s)
                                 <tr>
                                   <td>{{ $s->name }}</td>
-                                  <td><a class="btn btn-info" href="teacher/enroll" role="button">Show</a></td>
+                                  <td><a class="btn btn-info" href="{{ route('enroll', $s->id) }}" role="button">Show</a></td>
                                 </tr>
 
                             @endforeach

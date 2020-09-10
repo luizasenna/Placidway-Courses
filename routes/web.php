@@ -18,6 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::get('/teacher', function () {
-    return view('teacher');
-});
+        return view('teacher.teacher');
+      })->name('teacher');
+Route::get('/enroll/{stId}', 'HomeController@enroll')->name('enroll');

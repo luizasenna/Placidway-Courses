@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Subject;
 use App\Course;
+use App\Enrollment;
 use Auth;
 
 class HomeController extends Controller
@@ -17,7 +18,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+      if (Auth::guard($guard)->check()) {
+           return redirect('/welcome');
+       }
     }
 
     /**
@@ -27,14 +30,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-
        $id = User::find(Auth::id());
        $courses = Course::orderBy('idsubject')->get();
        $students = User::where('type','=','1')->get();
 
+
        if ($id->type==0) {
 
-         return view('teacher.teacher', [
+         return view('teacher', [
            'courses' => $courses,
            'id' => $id,
            'students' => $students
@@ -44,28 +47,6 @@ class HomeController extends Controller
 
          return view('home');
 
+
     }
-
-     public function enroll($stId)
-     {
-
-       $id = User::find(Auth::id());
-       $student =  User::find($stId);
-       $courses = Course::orderBy('idSubject')->get();
-
-       if ($id == $student or $id->type<>0){
-        return view('home');
-        }
-
-       return view('teacher.enroll', [
-         'courses' => $courses,
-         'id' => $id,
-         'student' => $student
-       ]);
-
-
-
-
-
-      }
 }
