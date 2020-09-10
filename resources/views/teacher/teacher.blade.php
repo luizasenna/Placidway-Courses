@@ -37,59 +37,8 @@
                             @endforeach
                             </table>
                     </div>
-                    <div class="row col-md-8">
-                    <select id="demo" multiple="multiple">
 
-                      <option value="one" data-section="top" selected="selected" data-index="3">C++</option>
 
-                      <option value="two" data-section="top" selected="selected" data-index="1">Python</option>
-
-                      <option value="three" data-section="top" selected="selected" data-index="2">Ruby</option>
-
-                      <option value="four" data-section="top">Swift</option>
-
-                      <option value="wow" data-section="JavaScript/Library/Popular">jQuery</option>
-
-                    </select>
-                    <div>
-                    <script>$("#demo").treeMultiselect(options);
-
-                    $("#demo").treeMultiselect({
-
-                          allowBatchSelection:true,
-
-                          sortable:false,
-
-                          collapsible:true,
-
-                          enableSelectAll:false,
-
-                          selectAllText:'Select All',
-
-                          unselectAllText:'Unselect All',
-
-                          freeze:false,
-
-                          hideSidePanel:false,
-
-                          maxSelections: 0,
-
-                          onlyBatchSelection:false,
-
-                          sectionDelimiter:'/',
-
-                          showSectionOnSelected:true,
-
-                          startCollapsed:false,
-
-                          searchable:false,
-
-                          searchParams: ['value','text','description','section'],
-
-                          onChange:null
-
-                        });
-                        </script>
 
                 </div>
             </div>

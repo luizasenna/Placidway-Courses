@@ -8,6 +8,7 @@ use App\Subject;
 use App\Course;
 use App\Enrollment;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -52,7 +53,12 @@ class HomeController extends Controller
 
        $id = User::find(Auth::id());
        $student =  User::find($stId);
-       $courses = Course::orderBy('idSubject')->get();
+       //$courses = Course::orderBy('idSubject')->get();
+       $courses = DB::select('select courses.id as id, courses.name as name, courses.idsubject as idsubject, subjects.name as subname, ifnull(idcourse, 0) as done from courses
+                  inner join subjects on subjects.id = courses.idsubject
+                  left join enrollments on courses.id = enrollments.idcourse
+                  order by idSubject, id'); //dd($courses);
+
        $enrolls = Enrollment::orderBy('idSubject')->get();
        $enrolled = Enrollment::where('iduser','=',$stId)->get();
 
@@ -73,14 +79,29 @@ class HomeController extends Controller
       public function goEnroll(Request $request)
          {
            $input = $request->all();
-           Enrollment::where('iduser', '1')->delete();
-           $enrollment = Enrollment::create($request->all());
-           $enrollment->save();
+           $idcourse = $request->input('idcourse');
+           $iduser = $request->input('iduser');
 
+           $input['idcourse'] = $idcourse;
+        //   dd($input['idcourse']);
+
+        //  dd($iduser);
+           Enrollment::where('iduser', $iduser)->delete();
+
+           $x = 0;
+           $size = count($idcourse)-1;
+           for ($x = 0; $x <= $size; $x++) {
+          //   dd($idcourse[$x]);
+             $enrollment = Enrollment::create(array('iduser' => '0','idteacher' => '0','idcourse' => '0'));
+             $enrollment->idcourse = $request->idcourse[$x];
+              $enrollment->iduser = $request->iduser;
+               $enrollment->idteacher = $request->idteacher;
+             $enrollment->save();
+            }
 
            //Flash::success('Emprestimo saved successfully.');
 
-           return self::enroll($stId);
+           return self::enroll($iduser);
 
          }
 
