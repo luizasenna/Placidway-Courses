@@ -66,8 +66,8 @@
 
                             <div class="col-md-6">
 
-                                <select class="form-control" id="selectType">
-                                  <option value="1">Student</option>
+                                <select class="form-control" name="type" id="selectType">
+                                  <option value="1" >Student</option>
                                   <option value="0">Teacher</option>
                                 </select>
                             </div>

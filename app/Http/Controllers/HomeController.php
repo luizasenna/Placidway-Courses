@@ -33,6 +33,7 @@ class HomeController extends Controller
        $id = User::find(Auth::id());
        $courses = Course::orderBy('idsubject')->get();
        $students = User::where('type','=','1')->get();
+       $enrolls = Enrollment::where('iduser','=',$id->id)->orderBy('idSubject')->get();
 
        if ($id->type==0) {
 
@@ -44,7 +45,10 @@ class HomeController extends Controller
 
        }
 
-         return view('home');
+         return view('home',[
+           'id' => $id,
+           'enrolls' => $enrolls
+         ]);
 
     }
 

@@ -14,7 +14,16 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    Hello there,  <b> {{ $id->name }}</b>
+                    <div>
+                      @if (!$enrolls->isEmpty())
+                        This Student is enrolled at this moment in:
+                        @foreach ($enrolls as $e)
+                            {{ $e->course->name }} |
+                        @endforeach
+                        @else You are not enrolled yet.
+                      @endif
+                    </div>
                 </div>
             </div>
         </div>
