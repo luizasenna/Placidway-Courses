@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Subject;
 use App\Course;
+use App\Enrollment;
 use Auth;
 
 class HomeController extends Controller
@@ -52,6 +53,7 @@ class HomeController extends Controller
        $id = User::find(Auth::id());
        $student =  User::find($stId);
        $courses = Course::orderBy('idSubject')->get();
+       $enrolls = Enrollment::orderBy('idSubject')->get();
 
        if ($id == $student or $id->type<>0){
         return view('home');
@@ -60,12 +62,17 @@ class HomeController extends Controller
        return view('teacher.enroll', [
          'courses' => $courses,
          'id' => $id,
-         'student' => $student
+         'student' => $student,
+         'enrolls' => $enrolls
        ]);
 
-
-
-
-
       }
+
+      public function goEnroll()
+         {
+
+
+         }
+
+
 }

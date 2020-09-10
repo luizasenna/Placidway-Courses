@@ -21,22 +21,31 @@
                       <span class="col-md-6"><b>You are: </b>  {{ $id->name }}</span>
                     </div>
                     <hr />
-                    <select id="courses" multiple="multiple" class="m-3">
-                      @foreach($courses as $c)
+                    <div class=" col-md-12 m-3">
 
-                      <option value="{{ $c->id }}" data-section="{{ $c->idsubject }}" selected="selected" data-index="3">{{ $c->name }}</option>
-
-
-                      @endforeach
-
-                    </select>
-
-
-<hr/>
+                      @if (!$enrolls->isEmpty())
+                        This Student is enrolled at this moment in:
+                        @foreach ($enrolls as $e)
+                            {! $e->id !}
+                        @endforeach
+                        @else This Student is not enrolled yet.
+                      @endif
+                    </div>
 
 
+                    <form action="goEnroll" method="post">
+                          <select id="courses" multiple="multiple" class="m-3">
+                            @foreach($courses as $c)
+                                <option value="{{ $c->id }}" data-section="{{ $c->subject->name }}" selected="selected" data-index="3">{{ $c->name }}</option>
+                            @endforeach
+                          </select>
+                          <div class="col-md-12 text-center m-3">
+                            <input class="btn btn-info btn-lg" type="submit" value="Enroll / Update"/>
+                            <input  type="hidden" value="{{ $student->id }}" name="student"/>
+                            <input type="hidden" value="{{ $id->id }}" name="teacher"/>
+                        </div>
 
-
+                    <form>
 
                 </div>
             </div>
