@@ -36,7 +36,7 @@
                     <form action="{{ route('goEnroll') }}" method="get">
                           <select id="courses" multiple="multiple" class="m-3" name="idcourse[]">
                             @foreach($courses as $c)
-                                <option value="{{ $c->id }}" data-section="{{ $c->subname }}" "{{ $c->done == 0 ? 'selected' : '' }}" data-index="3" >{{ $c->name }}</option>
+                                <option value="{{ $c->id }}" data-section="{{ $c->subname }}" '{{ $c->done == 0 ? "selected=selected" : '' }} data-index="3" >{{ $c->name }}</option>
                             @endforeach
                           </select>
                           <div class="col-md-12 text-center m-3">

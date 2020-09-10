@@ -101,7 +101,8 @@ class HomeController extends Controller
 
            //Flash::success('Emprestimo saved successfully.');
 
-           return self::enroll($iduser);
+           //return self::enroll($iduser);
+           return redirect()->intended('enroll/'.$iduser)->with('status' , 'Enrollment created or updated with success');
 
          }
 
