@@ -54,6 +54,7 @@ class HomeController extends Controller
        $student =  User::find($stId);
        $courses = Course::orderBy('idSubject')->get();
        $enrolls = Enrollment::orderBy('idSubject')->get();
+       $enrolled = Enrollment::where('iduser','=',$stId)->get();
 
        if ($id == $student or $id->type<>0){
         return view('home');
@@ -63,7 +64,8 @@ class HomeController extends Controller
          'courses' => $courses,
          'id' => $id,
          'student' => $student,
-         'enrolls' => $enrolls
+         'enrolls' => $enrolls,
+         'enrolled' => $enrolled
        ]);
 
       }
@@ -78,7 +80,7 @@ class HomeController extends Controller
 
            //Flash::success('Emprestimo saved successfully.');
 
-           return enroll();
+           return self::enroll($stId);
 
          }
 

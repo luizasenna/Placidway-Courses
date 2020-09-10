@@ -23,10 +23,10 @@
                     <hr />
                     <div class=" col-md-12 m-3">
 
-                      @if (!$enrolls->isEmpty())
+                      @if (!$enrolled->isEmpty())
                         This Student is enrolled at this moment in:
-                        @foreach ($enrolls as $e)
-                            {{ $e->id }}
+                        @foreach ($enrolled as $e)
+                            {{ $e->course->name }} | 
                         @endforeach
                         @else This Student is not enrolled yet.
                       @endif
@@ -36,7 +36,7 @@
                     <form action="{{ route('goEnroll') }}" method="get">
                           <select id="courses" multiple="multiple" class="m-3">
                             @foreach($courses as $c)
-                                <option value="{{ $c->id }}" data-section="{{ $c->subject->name }}" selected="selected" data-index="3">{{ $c->name }}</option>
+                                <option value="{{ $c->id }}" data-section="{{ $c->subject->name }}" selected="selected" data-index="3" name="idcourse">{{ $c->name }}</option>
                             @endforeach
                           </select>
                           <div class="col-md-12 text-center m-3">
