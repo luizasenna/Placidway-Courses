@@ -57,6 +57,7 @@ class HomeController extends Controller
        $courses = DB::select('select courses.id as id, courses.name as name, courses.idsubject as idsubject, subjects.name as subname, ifnull(idcourse, 0) as done from courses
                   inner join subjects on subjects.id = courses.idsubject
                   left join enrollments on courses.id = enrollments.idcourse
+                  and iduser = '.$stId.'
                   order by idSubject, id'); //dd($courses);
 
        $enrolls = Enrollment::orderBy('idSubject')->get();
