@@ -68,9 +68,17 @@ class HomeController extends Controller
 
       }
 
-      public function goEnroll()
+      public function goEnroll(Request $request)
          {
+           $input = $request->all();
+           Enrollment::where('iduser', '1')->delete();
+           $enrollment = Enrollment::create($request->all());
+           $enrollment->save();
 
+
+           //Flash::success('Emprestimo saved successfully.');
+
+           return enroll();
 
          }
 

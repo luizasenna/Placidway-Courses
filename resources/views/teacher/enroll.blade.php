@@ -26,14 +26,14 @@
                       @if (!$enrolls->isEmpty())
                         This Student is enrolled at this moment in:
                         @foreach ($enrolls as $e)
-                            {! $e->id !}
+                            {{ $e->id }}
                         @endforeach
                         @else This Student is not enrolled yet.
                       @endif
                     </div>
 
 
-                    <form action="goEnroll" method="post">
+                    <form action="{{ route('goEnroll') }}" method="get">
                           <select id="courses" multiple="multiple" class="m-3">
                             @foreach($courses as $c)
                                 <option value="{{ $c->id }}" data-section="{{ $c->subject->name }}" selected="selected" data-index="3">{{ $c->name }}</option>
@@ -41,8 +41,9 @@
                           </select>
                           <div class="col-md-12 text-center m-3">
                             <input class="btn btn-info btn-lg" type="submit" value="Enroll / Update"/>
-                            <input  type="hidden" value="{{ $student->id }}" name="student"/>
-                            <input type="hidden" value="{{ $id->id }}" name="teacher"/>
+                            <input  type="hidden" value="{{ $student->id }}" name="iduser"/>
+                            <input type="hidden" value="{{ $id->id }}" name="idteacher"/>
+
                         </div>
 
                     <form>

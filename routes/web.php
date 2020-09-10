@@ -24,4 +24,4 @@ Route::get('/teacher', function () {
         return view('teacher.teacher');
       })->name('teacher');
 Route::get('/enroll/{stId}', 'HomeController@enroll')->name('enroll');
-Route::post('/goEnroll', 'HomeController@goEnroll')->name('goEnroll');
+Route::get('/goEnroll', 'HomeController@goEnroll')->name('goEnroll');
