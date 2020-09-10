@@ -6,8 +6,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="text-right">Back to <a href="/home">List of Students</a></div>
+          <hr/>
             <div class="card">
-                <div class="card-header">{{ __('Enroll Student') }}</div>
+                <div class="card-header">
+                    <div class="text-left"> Enroll Student  </div>
+
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))

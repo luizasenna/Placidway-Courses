@@ -53,6 +53,11 @@ class HomeController extends Controller
 
        $id = User::find(Auth::id());
        $student =  User::find($stId);
+       if ($id == $student or $id->type<>0){
+        return view('home');
+        }
+
+
        //$courses = Course::orderBy('idSubject')->get();
        $courses = DB::select('select courses.id as id, courses.name as name, courses.idsubject as idsubject, subjects.name as subname, ifnull(idcourse, 0) as done from courses
                   inner join subjects on subjects.id = courses.idsubject
@@ -63,9 +68,6 @@ class HomeController extends Controller
        $enrolls = Enrollment::orderBy('idSubject')->get();
        $enrolled = Enrollment::where('iduser','=',$stId)->get();
 
-       if ($id == $student or $id->type<>0){
-        return view('home');
-        }
 
        return view('teacher.enroll', [
          'courses' => $courses,
